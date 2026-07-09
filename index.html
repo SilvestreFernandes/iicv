@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IICV - Instituto de Intervenção Cardiovascular</title>
+    <title>IICV - Instituto de Intervenção Cardiovascular | Brasília</title>
+    <meta name="description" content="Instituto de Intervenção Cardiovascular - Excelência em hemodinâmica, eletrofisiologia e cardiologia intervencionista em Brasília.">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Lato:wght@300;400;500;700&display=swap');
+
         * {
             margin: 0;
             padding: 0;
@@ -12,52 +15,51 @@
         }
 
         :root {
-            --primary-color: #1a1a1a;
-            --secondary-color: #c0c0c0;
-            --accent-color: #404040;
-            --light-gray: #f0f0f0;
-            --dark-gray: #2d2d2d;
+            --primary: #1a1a1a;
+            --secondary: #c0c0c0;
+            --accent: #404040;
+            --light-bg: #f8f9fa;
+            --white: #ffffff;
             --text-dark: #1a1a1a;
-            --text-light: #666;
-            --border-color: #d0d0d0;
+            --text-light: #5a5a5a;
+            --border: #e5e5e5;
+            --hover: #2d2d2d;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Lato', sans-serif;
             line-height: 1.6;
             color: var(--text-dark);
+            background: var(--white);
         }
 
-        /* Header e Navbar */
+        /* ===== HEADER ===== */
         header {
-            background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+            background: var(--white);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
             position: sticky;
             top: 0;
             z-index: 1000;
-            border-bottom: 3px solid var(--secondary-color);
+            border-bottom: 2px solid var(--secondary);
         }
 
         nav {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0.75rem 2rem;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
+            padding: 1rem 2rem;
         }
 
         .logo img {
-            height: 80px;
+            height: 75px;
             width: auto;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
-            transition: transform 0.3s;
+            transition: transform 0.3s ease;
         }
 
         .logo img:hover {
@@ -67,64 +69,74 @@
         nav ul {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 2.5rem;
         }
 
         nav a {
             text-decoration: none;
             color: var(--text-dark);
             font-weight: 500;
-            transition: color 0.3s;
             font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            position: relative;
         }
 
-        nav a:hover {
-            color: var(--secondary-color);
+        nav a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover:after {
+            width: 100%;
         }
 
         .contact-btn {
-            background: var(--primary-color);
-            color: var(--secondary-color);
-            padding: 0.75rem 1.5rem;
-            border-radius: 5px;
-            text-decoration: none;
-            transition: all 0.3s;
-            border: 2px solid var(--secondary-color);
+            background: var(--primary);
+            color: var(--secondary);
+            padding: 0.8rem 1.8rem;
+            border-radius: 4px;
+            border: 2px solid var(--secondary);
+            transition: all 0.3s ease;
             font-weight: 600;
         }
 
         .contact-btn:hover {
-            background: var(--secondary-color);
-            color: var(--primary-color);
+            background: var(--secondary);
+            color: var(--primary);
         }
 
-        /* Hero Section */
+        /* ===== HERO ===== */
         .hero {
-            background: white;
-            color: var(--primary-color);
-            padding: 5rem 2rem;
+            background: var(--white);
+            padding: 4rem 2rem;
             text-align: center;
-            border-bottom: 3px solid var(--secondary-color);
+            border-bottom: 1px solid var(--border);
         }
 
         .hero-content {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
         }
 
         .hero-logo {
-            height: 350px;
+            height: 380px;
             width: auto;
-            margin-bottom: 2rem;
-            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
-            animation: fadeInDown 0.8s ease-out;
-            display: inline-block;
+            margin-bottom: 2.5rem;
+            filter: drop-shadow(0 8px 16px rgba(0,0,0,0.1));
+            animation: slideInDown 0.8s ease-out;
         }
 
-        @keyframes fadeInDown {
+        @keyframes slideInDown {
             from {
                 opacity: 0;
-                transform: translateY(-20px);
+                transform: translateY(-30px);
             }
             to {
                 opacity: 1;
@@ -133,387 +145,235 @@
         }
 
         .hero h1 {
+            font-family: 'Playfair Display', serif;
             font-size: 3.5rem;
-            margin-bottom: 1rem;
-            line-height: 1.2;
-            color: var(--primary-color);
-            font-family: 'Georgia', 'Garamond', serif;
             font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
             letter-spacing: 1px;
+            line-height: 1.1;
         }
 
         .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            opacity: 0.8;
+            font-size: 1.2rem;
             color: var(--text-light);
-            font-family: 'Georgia', 'Garamond', serif;
+            margin-bottom: 2.5rem;
             font-weight: 300;
             letter-spacing: 0.5px;
         }
 
-        .cta-button {
+        .cta-btn {
             display: inline-block;
-            background: var(--primary-color);
-            color: var(--secondary-color);
-            padding: 1rem 2.5rem;
-            border-radius: 5px;
+            background: var(--primary);
+            color: var(--secondary);
+            padding: 1.1rem 3rem;
+            border-radius: 4px;
             text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: all 0.3s;
-            border: 2px solid var(--primary-color);
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .cta-button:hover {
+        .cta-btn:hover {
             background: transparent;
-            color: var(--primary-color);
-            border-color: var(--primary-color);
+            color: var(--primary);
         }
 
-        /* Container */
-        .container {
-            max-width: 1200px;
+        /* ===== VÍDEO ===== */
+        .video-section {
+            background: var(--light-bg);
+            padding: 5rem 2rem;
+        }
+
+        .video-container {
+            max-width: 1000px;
             margin: 0 auto;
-            padding: 0 2rem;
         }
 
-        /* Sections */
-        section {
-            padding: 4rem 0;
-        }
-
-        section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--primary);
             text-align: center;
-            color: var(--primary-color);
-            position: relative;
-            padding-bottom: 1rem;
+            margin-bottom: 1rem;
+            letter-spacing: 0.5px;
         }
 
-        section h2:after {
-            content: '';
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+            font-weight: 300;
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .video-wrapper video {
             position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
-            background: var(--secondary-color);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* ===== SEÇÕES ===== */
+        section {
+            padding: 5rem 2rem;
         }
 
         section.alt {
-            background: var(--light-gray);
+            background: var(--light-bg);
         }
 
-        /* Procedimentos */
-        .procedimentos-grid {
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* ===== PROCEDIMENTOS ===== */
+        .procedures-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
         }
 
         .procedure-card {
-            background: white;
-            padding: 2rem;
+            background: var(--white);
+            padding: 2.5rem;
             border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.08);
-            border-left: 4px solid var(--secondary-color);
-            transition: transform 0.3s, box-shadow 0.3s;
-            border-top: 1px solid var(--border-color);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border-top: 4px solid var(--secondary);
+            transition: all 0.3s ease;
+            overflow: hidden;
         }
 
         .procedure-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 12px rgba(0,0,0,0.12);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
         }
 
         .procedure-card h3 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-            border-bottom: 2px solid var(--secondary-color);
-            padding-bottom: 0.75rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1.2rem;
+            font-weight: 700;
         }
 
         .procedure-card ul {
             list-style: none;
-            padding-left: 0;
         }
 
         .procedure-card li {
-            padding: 0.5rem 0;
+            padding: 0.6rem 0;
             padding-left: 1.5rem;
             position: relative;
             color: var(--text-light);
             font-size: 0.95rem;
+            line-height: 1.6;
         }
 
         .procedure-card li:before {
-            content: "→";
+            content: "▸";
             position: absolute;
             left: 0;
-            color: var(--secondary-color);
-            font-weight: bold;
+            color: var(--secondary);
+            font-size: 1.2rem;
         }
 
-        /* Informações de Contato */
-        .info-section {
+        /* ===== INFO CARDS ===== */
+        .info-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
-            margin-top: 2rem;
+            margin-top: 3rem;
         }
 
         .info-card {
-            background: white;
-            padding: 2rem;
+            background: var(--white);
+            padding: 2.5rem;
             border-radius: 8px;
             text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.08);
-            border-top: 3px solid var(--secondary-color);
-            transition: transform 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border-top: 4px solid var(--secondary);
+            transition: transform 0.3s ease;
         }
 
         .info-card:hover {
-            transform: translateY(-3px);
+            transform: translateY(-5px);
         }
 
         .info-card h3 {
-            color: var(--primary-color);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--primary);
             margin-bottom: 1rem;
-            font-size: 1.1rem;
+            font-weight: 700;
         }
 
         .info-card p {
             color: var(--text-light);
-            margin-bottom: 0.5rem;
+            line-height: 1.8;
         }
 
         .info-card a {
-            color: var(--primary-color);
+            color: var(--primary);
+            font-weight: 600;
             text-decoration: none;
-            font-weight: bold;
-            border-bottom: 2px solid var(--secondary-color);
-            transition: all 0.3s;
+            border-bottom: 2px solid var(--secondary);
+            transition: all 0.3s ease;
         }
 
         .info-card a:hover {
-            color: var(--secondary-color);
+            color: var(--secondary);
         }
 
-        /* Equipe */
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .team-member {
-            text-align: center;
-            padding: 1rem;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
-            border-top: 3px solid var(--secondary-color);
-            transition: transform 0.3s;
-        }
-
-        .team-member:hover {
-            transform: translateY(-3px);
-        }
-
-        .team-member h4 {
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-            font-size: 0.95rem;
-        }
-
-        .team-member p {
-            color: var(--secondary-color);
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
-
-        /* Convênios */
-        .convenios-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        .convenio-item {
-            background: white;
-            padding: 1rem;
-            border-radius: 5px;
-            text-align: center;
-            border: 1px solid var(--border-color);
-            border-left: 4px solid var(--secondary-color);
-            font-size: 0.9rem;
-            color: var(--text-light);
-            transition: all 0.3s;
-        }
-
-        .convenio-item:hover {
-            background: var(--light-gray);
-            border-left-color: var(--primary-color);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--primary-color);
-            color: white;
-            padding: 2rem;
-            text-align: center;
-            margin-top: 4rem;
-            border-top: 3px solid var(--secondary-color);
-        }
-
-        footer p {
-            margin: 0.5rem 0;
-        }
-
-        /* Responsivo */
-        @media (max-width: 768px) {
-            nav ul {
-                gap: 1rem;
-                font-size: 0.9rem;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            section h2 {
-                font-size: 1.8rem;
-            }
-
-            .logo img {
-                height: 40px;
-            }
-        }
-
-        /* Formulário de Contato */
-        .form-container {
-            max-width: 600px;
-            margin: 2rem auto;
-            background: white;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.08);
-            border-top: 3px solid var(--secondary-color);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: var(--primary-color);
-        }
-
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid var(--border-color);
-            border-radius: 5px;
-            font-family: inherit;
-            font-size: 1rem;
-            transition: border-color 0.3s, box-shadow 0.3s;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: var(--secondary-color);
-            box-shadow: 0 0 5px rgba(192, 192, 192, 0.3);
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        .form-submit {
-            background: var(--primary-color);
-            color: var(--secondary-color);
-            padding: 1rem 2rem;
-            border: 2px solid var(--secondary-color);
-            border-radius: 5px;
-            font-size: 1rem;
-            font-weight: bold;
-            cursor: pointer;
-            width: 100%;
-            transition: all 0.3s;
-        }
-
-        .form-submit:hover {
-            background: var(--secondary-color);
-            color: var(--primary-color);
-        }
-
-        .form-submit:disabled {
-            background: var(--light-gray);
-            color: var(--text-light);
-            border-color: var(--border-color);
-            cursor: not-allowed;
-        }
-
-        .form-message {
-            margin-top: 1rem;
-            padding: 1rem;
-            border-radius: 5px;
-            text-align: center;
-            display: none;
-        }
-
-        .form-message.success {
-            background: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
-            display: block;
-        }
-
-        .form-message.error {
-            background: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
-            display: block;
-        }
-
-        /* Busca de Equipe */
+        /* ===== EQUIPE ===== */
         .team-search {
             margin-bottom: 2rem;
             text-align: center;
         }
 
         .team-search input {
-            max-width: 400px;
-            padding: 0.75rem;
-            border: 2px solid var(--border-color);
-            border-radius: 5px;
+            max-width: 450px;
+            padding: 0.9rem 1.5rem;
+            border: 2px solid var(--border);
+            border-radius: 4px;
             font-size: 1rem;
-            transition: border-color 0.3s;
+            transition: all 0.3s ease;
+            font-family: 'Lato', sans-serif;
         }
 
         .team-search input:focus {
             outline: none;
-            border-color: var(--secondary-color);
-            box-shadow: 0 0 5px rgba(192, 192, 192, 0.3);
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(192, 192, 192, 0.1);
         }
 
         .team-filters {
@@ -521,125 +381,320 @@
             gap: 1rem;
             justify-content: center;
             flex-wrap: wrap;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
         }
 
         .filter-btn {
-            padding: 0.5rem 1rem;
-            border: 2px solid var(--border-color);
-            background: white;
-            border-radius: 5px;
+            padding: 0.65rem 1.3rem;
+            border: 2px solid var(--border);
+            background: var(--white);
+            border-radius: 4px;
             cursor: pointer;
-            transition: all 0.3s;
-            font-weight: 500;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 0.9rem;
             color: var(--text-dark);
         }
 
         .filter-btn:hover,
         .filter-btn.active {
-            border-color: var(--secondary-color);
-            color: var(--primary-color);
+            border-color: var(--secondary);
             background: rgba(192, 192, 192, 0.1);
+            color: var(--primary);
         }
 
         .team-list {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 2rem;
+            margin-top: 2.5rem;
         }
 
         .team-card {
-            background: white;
-            padding: 1.5rem;
+            background: var(--white);
+            padding: 2rem;
             border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
-            border-top: 3px solid var(--secondary-color);
-            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border-top: 4px solid var(--secondary);
+            transition: all 0.3s ease;
         }
 
         .team-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.12);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
         }
 
         .team-card h4 {
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
+            color: var(--primary);
+            margin-bottom: 0.8rem;
             font-size: 1.1rem;
+            font-weight: 600;
         }
 
         .team-card .specialty {
-            color: var(--secondary-color);
-            font-weight: 600;
+            color: var(--secondary);
+            font-weight: 700;
             font-size: 0.9rem;
-            margin-bottom: 0.75rem;
-            border-left: 3px solid var(--secondary-color);
-            padding-left: 0.5rem;
+            margin-bottom: 0.8rem;
+            border-left: 3px solid var(--secondary);
+            padding-left: 0.8rem;
         }
 
-        .team-card .crm {
-            color: var(--text-light);
-            font-size: 0.85rem;
-            margin-bottom: 0.25rem;
-        }
-
+        .team-card .crm,
         .team-card .cpf {
             color: var(--text-light);
             font-size: 0.85rem;
+            margin-bottom: 0.3rem;
         }
 
         .no-results {
             text-align: center;
-            padding: 2rem;
+            padding: 3rem 2rem;
             color: var(--text-light);
             grid-column: 1 / -1;
+            font-size: 1.1rem;
         }
 
+        /* ===== CONVÊNIOS ===== */
+        .convenios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 1.2rem;
+            margin-top: 3rem;
+        }
+
+        .convenio-item {
+            background: var(--white);
+            padding: 1.3rem;
+            border-radius: 6px;
+            text-align: center;
+            border: 2px solid var(--border);
+            border-left: 4px solid var(--secondary);
+            font-size: 0.9rem;
+            color: var(--text-light);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .convenio-item:hover {
+            border-color: var(--secondary);
+            background: rgba(192, 192, 192, 0.05);
+            transform: translateY(-3px);
+        }
+
+        /* ===== FORMULÁRIO ===== */
+        .form-container {
+            max-width: 650px;
+            margin: 3rem auto;
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border-top: 4px solid var(--secondary);
+        }
+
+        .form-container h3 {
+            font-family: 'Playfair Display', serif;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--primary);
+            font-size: 1.8rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.8rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.7rem;
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--border);
+            border-radius: 4px;
+            font-family: 'Lato', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            color: var(--text-dark);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(192, 192, 192, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 140px;
+        }
+
+        .form-submit {
+            width: 100%;
+            background: var(--primary);
+            color: var(--secondary);
+            padding: 1.1rem;
+            border: 2px solid var(--primary);
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .form-submit:hover {
+            background: transparent;
+            color: var(--primary);
+        }
+
+        .form-message {
+            margin-top: 1.5rem;
+            padding: 1.2rem;
+            border-radius: 4px;
+            text-align: center;
+            display: none;
+            font-weight: 600;
+        }
+
+        .form-message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 2px solid #c3e6cb;
+            display: block;
+        }
+
+        .form-message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 2px solid #f5c6cb;
+            display: block;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--primary);
+            color: var(--white);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 2px solid var(--secondary);
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+            line-height: 1.8;
+        }
+
+        footer p:first-child {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        footer p.credits {
+            font-size: 0.85rem;
+            opacity: 0.8;
+            margin-top: 1.5rem;
+        }
+
+        /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
-            .team-filters {
-                gap: 0.5rem;
+            nav {
+                flex-wrap: wrap;
+                gap: 1rem;
             }
 
-            .filter-btn {
-                padding: 0.4rem 0.8rem;
+            nav ul {
+                gap: 1.5rem;
                 font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .hero-logo {
+                height: 250px;
+            }
+
+            .procedures-grid,
+            .info-grid,
+            .convenios-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .team-list {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+
+            .form-container {
+                padding: 2rem;
             }
         }
 
         @media (max-width: 480px) {
             nav {
-                flex-direction: column;
-                gap: 1rem;
                 padding: 1rem;
             }
 
-            nav ul {
-                flex-direction: column;
-                gap: 0.5rem;
-                text-align: center;
+            .logo img {
+                height: 50px;
+            }
+
+            .hero {
+                padding: 2rem 1rem;
             }
 
             .hero h1 {
-                font-size: 1.5rem;
+                font-size: 1.8rem;
             }
 
             section {
-                padding: 2rem 0;
+                padding: 3rem 1rem;
             }
 
-            .form-container {
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .procedure-card,
+            .info-card,
+            .team-card {
                 padding: 1.5rem;
             }
 
-            .team-list {
-                grid-template-columns: 1fr;
+            nav ul {
+                display: none;
+            }
+
+            .contact-btn {
+                padding: 0.7rem 1.5rem;
+                font-size: 0.9rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header/Navbar -->
+    <!-- HEADER -->
     <header>
         <nav>
             <div class="logo">
@@ -652,36 +707,41 @@
                 <li><a href="#convenios">Convênios</a></li>
                 <li><a href="#contato">Contato</a></li>
             </ul>
-            <a href="tel:6140404824" class="contact-btn">Agende Agora</a>
+            <a href="https://wa.me/556140404824?text=Olá!%20Gostaria%20de%20agendar%20uma%20consulta%20no%20IICV." target="_blank" class="contact-btn">Agende Agora</a>
         </nav>
     </header>
 
-    <!-- Hero Section -->
+    <!-- HERO -->
     <section class="hero">
         <div class="hero-content">
             <img src="logo-iicv.png" alt="IICV Logo" class="hero-logo">
             <h1>Instituto de Intervenção Cardiovascular</h1>
             <p>Excelência em diagnóstico e tratamento de doenças cardiovasculares</p>
-            <a href="tel:6140404824" class="cta-button">📞 (61) 4040-4824</a>
+            <a href="https://wa.me/556140404824?text=Olá!%20Gostaria%20de%20agendar%20uma%20consulta%20no%20IICV." target="_blank" class="cta-btn">Agende Agora</a>
         </div>
     </section>
 
-    <!-- Sobre -->
-    <section id="sobre">
-        <div class="container">
-            <h2>Sobre o IICV</h2>
-            <p style="text-align: center; color: var(--text-light); max-width: 800px; margin: 0 auto 2rem;">
-                O IICV é um centro especializado em hemodinâmica e cardiologia intervencionista, oferecendo 
-                procedimentos de alta complexidade com equipamento de ponta e equipe de profissionais altamente qualificados.
-            </p>
+    <!-- VÍDEO -->
+    <section class="video-section">
+        <div class="video-container">
+            <h2 class="section-title">Conheça o IICV</h2>
+            <p class="section-subtitle">Assista nosso vídeo institucional e saiba mais sobre nossos serviços</p>
+            <div class="video-wrapper">
+                <video controls>
+                    <source src="video-iicv.mp4" type="video/mp4">
+                    Seu navegador não suporta vídeo HTML5.
+                </video>
+            </div>
         </div>
     </section>
 
-    <!-- Procedimentos -->
-    <section id="procedimentos" class="alt">
+    <!-- PROCEDIMENTOS -->
+    <section id="procedimentos">
         <div class="container">
-            <h2>Procedimentos Realizados</h2>
-            <div class="procedimentos-grid">
+            <h2 class="section-title">Procedimentos Realizados</h2>
+            <p class="section-subtitle">Oferecemos uma ampla gama de procedimentos de alta complexidade</p>
+            
+            <div class="procedures-grid">
                 <div class="procedure-card">
                     <h3>🫀 Hemodinâmica</h3>
                     <ul>
@@ -690,7 +750,7 @@
                         <li>Implante de Stent</li>
                         <li>Valvoplastia</li>
                         <li>Fechamento de CIA, FOP, PCA</li>
-                        <li>Implante de Prótese Transcatéter</li>
+                        <li>Prótese Transcatéter (TAVI)</li>
                         <li>Ultrassom Coronariano</li>
                     </ul>
                 </div>
@@ -704,13 +764,15 @@
                         <li>Cardioversão</li>
                         <li>Mapeamento Eletroanatômico</li>
                         <li>Crio Ablação</li>
+                        <li>Implante de Dispositivos</li>
                     </ul>
                 </div>
 
                 <div class="procedure-card">
                     <h3>🧠 Radiologia Intervencionista</h3>
                     <ul>
-                        <li>Angiografia Cerebral e Carótida</li>
+                        <li>Angiografia Cerebral</li>
+                        <li>Angioplastia Carótida</li>
                         <li>Angioplastia Periférica</li>
                         <li>Embolização de Aneurisma</li>
                         <li>Tratamento de MAV</li>
@@ -722,47 +784,47 @@
                 <div class="procedure-card">
                     <h3>🏥 Cirurgia Cardiovascular</h3>
                     <ul>
-                        <li>Implante de Marcapasso Definitivo</li>
+                        <li>Implante de Marcapasso</li>
                         <li>Implante de Desfibrilador</li>
-                        <li>Implante de Ressincronizador</li>
+                        <li>Ressincronizador Cardíaco</li>
                         <li>Cirurgia Vascular</li>
                         <li>Revascularização Coronariana</li>
+                        <li>Cirurgias de Válvulas</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Equipamento e Infraestrutura -->
-    <section id="equipamento">
+    <!-- EQUIPAMENTO -->
+    <section id="equipamento" class="alt">
         <div class="container">
-            <h2>Equipamento e Infraestrutura</h2>
-            <div class="info-section">
+            <h2 class="section-title">Equipamento e Infraestrutura</h2>
+            <p class="section-subtitle">Tecnologia de ponta para os melhores resultados</p>
+            
+            <div class="info-grid">
                 <div class="info-card">
                     <h3>Salas de Intervenção</h3>
-                    <p>Equipadas com tecnologia de ponta para procedimentos de hemodinâmica e cardiologia intervencionista</p>
+                    <p>Equipadas com angiógrafos de última geração, permitindo visualização em tempo real dos procedimentos com máxima precisão e segurança.</p>
                 </div>
                 <div class="info-card">
                     <h3>Equipe Especializada</h3>
-                    <p>Cardiologistas, cirurgiões e especialistas em radiologia intervencionista com ampla experiência</p>
+                    <p>Cardiologistas, cirurgiões e especialistas em radiologia intervencionista com ampla experiência nacional e internacional.</p>
                 </div>
                 <div class="info-card">
                     <h3>Atendimento 24h</h3>
-                    <p>Disponível para urgências e emergências cardiovasculares todos os dias</p>
+                    <p>Disponível para urgências e emergências cardiovasculares todos os dias da semana, com equipe preparada para qualquer situação.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Equipe Médica -->
-    <section id="equipe" class="alt">
+    <!-- EQUIPE -->
+    <section id="equipe">
         <div class="container">
-            <h2>Equipe Médica Especializada</h2>
-            <p style="text-align: center; color: var(--text-light); margin-bottom: 2rem;">
-                Profissionais altamente qualificados com experiência em cardiologia intervencionista
-            </p>
+            <h2 class="section-title">Equipe Médica</h2>
+            <p class="section-subtitle">Profissionais altamente qualificados dedicados à sua saúde</p>
             
-            <!-- Busca e Filtros -->
             <div class="team-search">
                 <input type="text" id="teamSearch" placeholder="🔍 Buscar por nome ou especialidade...">
             </div>
@@ -775,19 +837,16 @@
                 <button class="filter-btn" data-filter="Eletrofisiologista">Eletrofisiologista</button>
             </div>
 
-            <div class="team-list" id="teamList">
-                <!-- Conteúdo será preenchido por JavaScript -->
-            </div>
+            <div class="team-list" id="teamList"></div>
         </div>
     </section>
 
-    <!-- Convênios -->
+    <!-- CONVÊNIOS -->
     <section id="convenios" class="alt">
         <div class="container">
-            <h2>Convênios Habilitados</h2>
-            <p style="text-align: center; color: var(--text-light); margin-bottom: 2rem;">
-                Trabalhamos com mais de 80 convênios de saúde. Alguns dos principais:
-            </p>
+            <h2 class="section-title">Convênios Habilitados</h2>
+            <p class="section-subtitle">Trabalhamos com mais de 80 convênios de saúde</p>
+            
             <div class="convenios-grid">
                 <div class="convenio-item">Amil</div>
                 <div class="convenio-item">Unimed</div>
@@ -809,31 +868,29 @@
         </div>
     </section>
 
-    <!-- Contato -->
+    <!-- CONTATO -->
     <section id="contato">
         <div class="container">
-            <h2>Entre em Contato</h2>
-            <div class="info-section">
+            <h2 class="section-title">Entre em Contato</h2>
+            <p class="section-subtitle">Estamos prontos para atender você</p>
+            
+            <div class="info-grid">
                 <div class="info-card">
                     <h3>📞 Telefone</h3>
                     <p><a href="tel:6140404824">(61) 4040-4824</a></p>
                 </div>
                 <div class="info-card">
                     <h3>📍 Endereço</h3>
-                    <p>QD SGAS 613, Bloco C, Lote 2<br>
-                    Asa Sul, Brasília - DF<br>
-                    CEP: 70.200-730</p>
+                    <p>QD SGAS 613, Bloco C, Lote 2<br>Asa Sul, Brasília - DF<br>CEP: 70.200-730</p>
                 </div>
                 <div class="info-card">
-                    <h3>🕐 Atendimento</h3>
-                    <p>Segunda a Sexta: 8h às 18h<br>
-                    Urgência: 24 horas</p>
+                    <h3>🕐 Funcionamento</h3>
+                    <p>Segunda a Sexta: 8h às 18h<br>Urgência: 24 horas</p>
                 </div>
             </div>
 
-            <!-- Formulário de Contato -->
             <div class="form-container">
-                <h3 style="text-align: center; margin-bottom: 1.5rem; color: var(--primary-color);">Envie sua Mensagem</h3>
+                <h3>Envie uma Mensagem</h3>
                 <form id="contactForm">
                     <div class="form-group">
                         <label for="name">Nome *</label>
@@ -854,9 +911,9 @@
                         <label for="subject">Assunto *</label>
                         <select id="subject" name="subject" required>
                             <option value="">Selecione um assunto</option>
-                            <option value="agendamento">Agendamento</option>
-                            <option value="informacoes">Informações sobre procedimentos</option>
-                            <option value="convenio">Dúvidas sobre convênio</option>
+                            <option value="agendamento">Agendamento de Consulta</option>
+                            <option value="procedimento">Informações sobre Procedimentos</option>
+                            <option value="convenio">Dúvidas sobre Convênio</option>
                             <option value="outro">Outro</option>
                         </select>
                     </div>
@@ -873,13 +930,11 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- FOOTER -->
     <footer>
         <p>&copy; 2026 IICV - Instituto de Intervenção Cardiovascular</p>
         <p>Excelência em Cardiologia Intervencionista</p>
-        <p style="font-size: 0.9rem; margin-top: 1rem; opacity: 0.8;">
-            Diretor Presidente: Dr. Paulo Antônio Marra da Motta
-        </p>
+        <p class="credits">Diretor Presidente: Dr. Paulo Antônio Marra da Motta</p>
     </footer>
 
     <script>
@@ -929,7 +984,6 @@
             { nome: "Thiago Almeida Barroso", especialidade: "Cirurgia Vascular/endovascular", crm: "23261", cpf: "657.605.903-59" },
         ];
 
-        // Renderizar equipe
         function renderTeam(filtro = "todos", termo = "") {
             const teamList = document.getElementById("teamList");
             teamList.innerHTML = "";
@@ -965,7 +1019,6 @@
             });
         }
 
-        // Event Listeners para filtros
         document.querySelectorAll(".filter-btn").forEach(btn => {
             btn.addEventListener("click", function() {
                 document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
@@ -976,52 +1029,38 @@
             });
         });
 
-        // Event Listener para busca
         document.getElementById("teamSearch").addEventListener("input", function() {
             const termo = this.value;
             const filtro = document.querySelector(".filter-btn.active").dataset.filter;
             renderTeam(filtro, termo);
         });
 
-        // Formulário de Contato
+        // Formulário
         document.getElementById("contactForm").addEventListener("submit", function(e) {
             e.preventDefault();
 
             const submitBtn = this.querySelector(".form-submit");
             const messageDiv = document.getElementById("formMessage");
-            const formData = {
-                nome: document.getElementById("name").value,
-                email: document.getElementById("email").value,
-                telefone: document.getElementById("phone").value,
-                assunto: document.getElementById("subject").value,
-                mensagem: document.getElementById("message").value
-            };
 
-            // Enviar para webhook (pode usar serviços como Formspree, Basin, etc)
             submitBtn.disabled = true;
             submitBtn.textContent = "Enviando...";
 
-            // Simular envio com setTimeout
             setTimeout(() => {
                 messageDiv.className = "form-message success";
                 messageDiv.textContent = "✓ Mensagem enviada com sucesso! Entraremos em contato em breve.";
                 
-                // Limpar formulário
                 this.reset();
                 submitBtn.disabled = false;
                 submitBtn.textContent = "Enviar Mensagem";
 
-                // Limpar mensagem após 5 segundos
                 setTimeout(() => {
                     messageDiv.className = "form-message";
                 }, 5000);
             }, 1000);
         });
 
-        // Renderizar equipe ao carregar a página
         renderTeam();
 
-        // Smooth scroll para links de navegação
         document.querySelectorAll("a[href^='#']").forEach(link => {
             link.addEventListener("click", function(e) {
                 const href = this.getAttribute("href");
