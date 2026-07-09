@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IICV - Instituto de Intervenção Cardiovascular</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #1a1a1a;
+            --secondary-color: #c0c0c0;
+            --accent-color: #404040;
+            --light-gray: #f0f0f0;
+            --dark-gray: #2d2d2d;
+            --text-dark: #1a1a1a;
+            --text-light: #666;
+            --border-color: #d0d0d0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+
+        /* Header e Navbar */
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 3px solid var(--secondary-color);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .logo img {
+            height: 60px;
+            width: auto;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        nav a:hover {
+            color: var(--secondary-color);
+        }
+
+        .contact-btn {
+            background: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: 2px solid var(--secondary-color);
+            font-weight: 600;
+        }
+
+        .contact-btn:hover {
+            background: var(--secondary-color);
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-gray) 100%);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+            border-bottom: 3px solid var(--secondary-color);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-logo {
+            height: 150px;
+            width: auto;
+            margin-bottom: 2rem;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            color: white;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            color: var(--secondary-color);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--secondary-color);
+            color: var(--primary-color);
+            padding: 1rem 2.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            border: 2px solid var(--secondary-color);
+        }
+
+        .cta-button:hover {
+            background: transparent;
+            color: var(--secondary-color);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Sections */
+        section {
+            padding: 4rem 0;
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        section h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: var(--secondary-color);
+        }
+
+        section.alt {
+            background: var(--light-gray);
+        }
+
+        /* Procedimentos */
+        .procedimentos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .procedure-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.08);
+            border-left: 4px solid var(--secondary-color);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .procedure-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0,0,0,0.12);
+        }
+
+        .procedure-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 0.75rem;
+        }
+
+        .procedure-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .procedure-card li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .procedure-card li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+
+        /* Informações de Contato */
+        .info-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .info-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.08);
+            border-top: 3px solid var(--secondary-color);
+            transition: transform 0.3s;
+        }
+
+        .info-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .info-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .info-card p {
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .info-card a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+            border-bottom: 2px solid var(--secondary-color);
+            transition: all 0.3s;
+        }
+
+        .info-card a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Equipe */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .team-member {
+            text-align: center;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+            border-top: 3px solid var(--secondary-color);
+            transition: transform 0.3s;
+        }
+
+        .team-member:hover {
+            transform: translateY(-3px);
+        }
+
+        .team-member h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .team-member p {
+            color: var(--secondary-color);
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* Convênios */
+        .convenios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .convenio-item {
+            background: white;
+            padding: 1rem;
+            border-radius: 5px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            border-left: 4px solid var(--secondary-color);
+            font-size: 0.9rem;
+            color: var(--text-light);
+            transition: all 0.3s;
+        }
+
+        .convenio-item:hover {
+            background: var(--light-gray);
+            border-left-color: var(--primary-color);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-color);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 4rem;
+            border-top: 3px solid var(--secondary-color);
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            section h2 {
+                font-size: 1.8rem;
+            }
+
+            .logo img {
+                height: 40px;
+            }
+        }
+
+        /* Formulário de Contato */
+        .form-container {
+            max-width: 600px;
+            margin: 2rem auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.08);
+            border-top: 3px solid var(--secondary-color);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 5px rgba(192, 192, 192, 0.3);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-submit {
+            background: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 1rem 2rem;
+            border: 2px solid var(--secondary-color);
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s;
+        }
+
+        .form-submit:hover {
+            background: var(--secondary-color);
+            color: var(--primary-color);
+        }
+
+        .form-submit:disabled {
+            background: var(--light-gray);
+            color: var(--text-light);
+            border-color: var(--border-color);
+            cursor: not-allowed;
+        }
+
+        .form-message {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 5px;
+            text-align: center;
+            display: none;
+        }
+
+        .form-message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            display: block;
+        }
+
+        .form-message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            display: block;
+        }
+
+        /* Busca de Equipe */
+        .team-search {
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .team-search input {
+            max-width: 400px;
+            padding: 0.75rem;
+            border: 2px solid var(--border-color);
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .team-search input:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 5px rgba(192, 192, 192, 0.3);
+        }
+
+        .team-filters {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1rem;
+            border: 2px solid var(--border-color);
+            background: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            border-color: var(--secondary-color);
+            color: var(--primary-color);
+            background: rgba(192, 192, 192, 0.1);
+        }
+
+        .team-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .team-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+            border-top: 3px solid var(--secondary-color);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .team-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.12);
+        }
+
+        .team-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .team-card .specialty {
+            color: var(--secondary-color);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+            border-left: 3px solid var(--secondary-color);
+            padding-left: 0.5rem;
+        }
+
+        .team-card .crm {
+            color: var(--text-light);
+            font-size: 0.85rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .team-card .cpf {
+            color: var(--text-light);
+            font-size: 0.85rem;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-light);
+            grid-column: 1 / -1;
+        }
+
+        @media (max-width: 768px) {
+            .team-filters {
+                gap: 0.5rem;
+            }
+
+            .filter-btn {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            section {
+                padding: 2rem 0;
+            }
+
+            .form-container {
+                padding: 1.5rem;
+            }
+
+            .team-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header/Navbar -->
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="logo-iicv.png" alt="IICV Logo">
+                <span>IICV</span>
+            </div>
+            <ul>
+                <li><a href="#procedimentos">Procedimentos</a></li>
+                <li><a href="#equipamento">Equipamento</a></li>
+                <li><a href="#equipe">Equipe</a></li>
+                <li><a href="#convenios">Convênios</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+            <a href="tel:6140404824" class="contact-btn">Agende Agora</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <img src="logo-iicv.png" alt="IICV Logo" class="hero-logo">
+            <h1>Instituto de Intervenção Cardiovascular</h1>
+            <p>Excelência em diagnóstico e tratamento de doenças cardiovasculares</p>
+            <a href="tel:6140404824" class="cta-button">📞 (61) 4040-4824</a>
+        </div>
+    </section>
+
+    <!-- Sobre -->
+    <section id="sobre">
+        <div class="container">
+            <h2>Sobre o IICV</h2>
+            <p style="text-align: center; color: var(--text-light); max-width: 800px; margin: 0 auto 2rem;">
+                O IICV é um centro especializado em hemodinâmica e cardiologia intervencionista, oferecendo 
+                procedimentos de alta complexidade com equipamento de ponta e equipe de profissionais altamente qualificados.
+            </p>
+        </div>
+    </section>
+
+    <!-- Procedimentos -->
+    <section id="procedimentos" class="alt">
+        <div class="container">
+            <h2>Procedimentos Realizados</h2>
+            <div class="procedimentos-grid">
+                <div class="procedure-card">
+                    <h3>🫀 Hemodinâmica</h3>
+                    <ul>
+                        <li>Cineangiocoronariografia</li>
+                        <li>Angioplastia Coronariana</li>
+                        <li>Implante de Stent</li>
+                        <li>Valvoplastia</li>
+                        <li>Fechamento de CIA, FOP, PCA</li>
+                        <li>Implante de Prótese Transcatéter</li>
+                        <li>Ultrassom Coronariano</li>
+                    </ul>
+                </div>
+
+                <div class="procedure-card">
+                    <h3>⚡ Eletrofisiologia</h3>
+                    <ul>
+                        <li>Estudo Eletrofisiológico</li>
+                        <li>Ablação de Arritmias</li>
+                        <li>Ablação de Fibrilação Atrial</li>
+                        <li>Cardioversão</li>
+                        <li>Mapeamento Eletroanatômico</li>
+                        <li>Crio Ablação</li>
+                    </ul>
+                </div>
+
+                <div class="procedure-card">
+                    <h3>🧠 Radiologia Intervencionista</h3>
+                    <ul>
+                        <li>Angiografia Cerebral e Carótida</li>
+                        <li>Angioplastia Periférica</li>
+                        <li>Embolização de Aneurisma</li>
+                        <li>Tratamento de MAV</li>
+                        <li>Implante de Cateter</li>
+                        <li>Endoprótese Aórtica</li>
+                    </ul>
+                </div>
+
+                <div class="procedure-card">
+                    <h3>🏥 Cirurgia Cardiovascular</h3>
+                    <ul>
+                        <li>Implante de Marcapasso Definitivo</li>
+                        <li>Implante de Desfibrilador</li>
+                        <li>Implante de Ressincronizador</li>
+                        <li>Cirurgia Vascular</li>
+                        <li>Revascularização Coronariana</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Equipamento e Infraestrutura -->
+    <section id="equipamento">
+        <div class="container">
+            <h2>Equipamento e Infraestrutura</h2>
+            <div class="info-section">
+                <div class="info-card">
+                    <h3>Salas de Intervenção</h3>
+                    <p>Equipadas com tecnologia de ponta para procedimentos de hemodinâmica e cardiologia intervencionista</p>
+                </div>
+                <div class="info-card">
+                    <h3>Equipe Especializada</h3>
+                    <p>Cardiologistas, cirurgiões e especialistas em radiologia intervencionista com ampla experiência</p>
+                </div>
+                <div class="info-card">
+                    <h3>Atendimento 24h</h3>
+                    <p>Disponível para urgências e emergências cardiovasculares todos os dias</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Equipe Médica -->
+    <section id="equipe" class="alt">
+        <div class="container">
+            <h2>Equipe Médica Especializada</h2>
+            <p style="text-align: center; color: var(--text-light); margin-bottom: 2rem;">
+                Profissionais altamente qualificados com experiência em cardiologia intervencionista
+            </p>
+            
+            <!-- Busca e Filtros -->
+            <div class="team-search">
+                <input type="text" id="teamSearch" placeholder="🔍 Buscar por nome ou especialidade...">
+            </div>
+
+            <div class="team-filters">
+                <button class="filter-btn active" data-filter="todos">Todos</button>
+                <button class="filter-btn" data-filter="Cardiologista">Cardiologista</button>
+                <button class="filter-btn" data-filter="Cirurgião">Cirurgião</button>
+                <button class="filter-btn" data-filter="Neuroradiologista">Neuroradiologista</button>
+                <button class="filter-btn" data-filter="Eletrofisiologista">Eletrofisiologista</button>
+            </div>
+
+            <div class="team-list" id="teamList">
+                <!-- Conteúdo será preenchido por JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Convênios -->
+    <section id="convenios" class="alt">
+        <div class="container">
+            <h2>Convênios Habilitados</h2>
+            <p style="text-align: center; color: var(--text-light); margin-bottom: 2rem;">
+                Trabalhamos com mais de 80 convênios de saúde. Alguns dos principais:
+            </p>
+            <div class="convenios-grid">
+                <div class="convenio-item">Amil</div>
+                <div class="convenio-item">Unimed</div>
+                <div class="convenio-item">Bradesco Saúde</div>
+                <div class="convenio-item">Caixa Saúde</div>
+                <div class="convenio-item">Sul América</div>
+                <div class="convenio-item">Allianz Saúde</div>
+                <div class="convenio-item">Cigna</div>
+                <div class="convenio-item">Petrobras Saúde</div>
+                <div class="convenio-item">Cassi</div>
+                <div class="convenio-item">BRB Saúde</div>
+                <div class="convenio-item">Care Plus</div>
+                <div class="convenio-item">Gama Saúde</div>
+                <div class="convenio-item">Medservice</div>
+                <div class="convenio-item">Quality Pro</div>
+                <div class="convenio-item">E-Vida</div>
+                <div class="convenio-item">Assist Card</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato -->
+    <section id="contato">
+        <div class="container">
+            <h2>Entre em Contato</h2>
+            <div class="info-section">
+                <div class="info-card">
+                    <h3>📞 Telefone</h3>
+                    <p><a href="tel:6140404824">(61) 4040-4824</a></p>
+                </div>
+                <div class="info-card">
+                    <h3>📍 Endereço</h3>
+                    <p>QD SGAS 613, Bloco C, Lote 2<br>
+                    Asa Sul, Brasília - DF<br>
+                    CEP: 70.200-730</p>
+                </div>
+                <div class="info-card">
+                    <h3>🕐 Atendimento</h3>
+                    <p>Segunda a Sexta: 8h às 18h<br>
+                    Urgência: 24 horas</p>
+                </div>
+            </div>
+
+            <!-- Formulário de Contato -->
+            <div class="form-container">
+                <h3 style="text-align: center; margin-bottom: 1.5rem; color: var(--primary-color);">Envie sua Mensagem</h3>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Nome *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">E-mail *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Telefone</label>
+                        <input type="tel" id="phone" name="phone" placeholder="(XX) XXXXX-XXXX">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Assunto *</label>
+                        <select id="subject" name="subject" required>
+                            <option value="">Selecione um assunto</option>
+                            <option value="agendamento">Agendamento</option>
+                            <option value="informacoes">Informações sobre procedimentos</option>
+                            <option value="convenio">Dúvidas sobre convênio</option>
+                            <option value="outro">Outro</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Mensagem *</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+
+                    <button type="submit" class="form-submit">Enviar Mensagem</button>
+                    <div class="form-message" id="formMessage"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 IICV - Instituto de Intervenção Cardiovascular</p>
+        <p>Excelência em Cardiologia Intervencionista</p>
+        <p style="font-size: 0.9rem; margin-top: 1rem; opacity: 0.8;">
+            Diretor Presidente: Dr. Paulo Antônio Marra da Motta
+        </p>
+    </footer>
+
+    <script>
+        // Base de dados de profissionais
+        const profissionais = [
+            { nome: "Adriano Galhardo", especialidade: "Cirurgia Vascular/endovascular", crm: "24738", cpf: "064.257.774-94" },
+            { nome: "Alane Miranda Leite", especialidade: "Cirurgia Vascular/endovascular", crm: "28205", cpf: "756.054.492-49" },
+            { nome: "Alba Godoy", especialidade: "Eletrofisiologista/Cardiologista", crm: "26189", cpf: "" },
+            { nome: "André Luiz Guimarães Câmara", especialidade: "Angiorradiologista", crm: "13355", cpf: "001.481.587-73" },
+            { nome: "Anwer Marques Costa Arbati", especialidade: "Cirurgia Vascular/endovascular", crm: "23970", cpf: "007.882.464-88" },
+            { nome: "Bruno de Sousa Mendes Parente", especialidade: "Neuroradiologista Intervencionista", crm: "14.756", cpf: "638.901.783-91" },
+            { nome: "Bruno Sepulveda Resis", especialidade: "Cirurgião Cardiovascular", crm: "16098", cpf: "" },
+            { nome: "Camila Leandro Gadelha", especialidade: "Cirurgia Vascular/endovascular", crm: "18048", cpf: "012.511.001-47" },
+            { nome: "Candido Rodrigues Martins Gomes", especialidade: "Cirurgião Cardiovascular", crm: "4755", cpf: "" },
+            { nome: "Carla Septmio Margalho", especialidade: "Eletrofisiologista/Cardiologista", crm: "10301", cpf: "" },
+            { nome: "Carlos Eduardo Dias P. M Ontiveros", especialidade: "Neuroradiologista Intervencionista", crm: "12493", cpf: "473.800.121-34" },
+            { nome: "Daniel França Vasconcelos", especialidade: "Cardiologista", crm: "4686", cpf: "642.804.897-34" },
+            { nome: "Daniel Nobile", especialidade: "Cirurgia Vascular/endovascular", crm: "32104", cpf: "118.368.805-77" },
+            { nome: "Eduardo Siqueira Waihrich", especialidade: "Neuroradiologista Intervencionista", crm: "14.180", cpf: "929.379.501-91" },
+            { nome: "Fábio Feuerharmel Giuseppin", especialidade: "Cardiologista", crm: "16552", cpf: "007.574.259-41" },
+            { nome: "Fabricio Caied", especialidade: "Cardiologista/Hemodinamicista", crm: "31466", cpf: "" },
+            { nome: "Fernanda Cordeiro da Silva", especialidade: "Cirurgia Vascular/endovascular", crm: "30873", cpf: "058.160.207-22" },
+            { nome: "Fernando Diogo", especialidade: "Neurocirurgião", crm: "10591", cpf: "" },
+            { nome: "Glauco Kalil da Silva Pina", especialidade: "Cirurgião Cardiovascular", crm: "21469", cpf: "080.476.918-48" },
+            { nome: "Gustavo Lara Moscardi", especialidade: "Cirurgião Cardiovascular", crm: "18483", cpf: "" },
+            { nome: "Gustavo Paludetto Oliveira", especialidade: "Cirurgião Endovascular", crm: "14598", cpf: "254.998.218-52" },
+            { nome: "Henrique César Maia", especialidade: "Cardiologista/Eletrofisiologista", crm: "7159", cpf: "" },
+            { nome: "Iruena Moraes Kessler", especialidade: "Neuroradiologista Intervencionista", crm: "7717", cpf: "369.030.781-34" },
+            { nome: "Isaac Azevedo Silva", especialidade: "Cirurgião Cardiovascular", crm: "18207", cpf: "030.588.156-62" },
+            { nome: "Jairo Macedo da Rocha", especialidade: "Eletrofisiologista/Cardiologista", crm: "10.396", cpf: "" },
+            { nome: "José Mario Baggio Júnior", especialidade: "Cirurgião Cardiovascular", crm: "13833", cpf: "249.541.488-55" },
+            { nome: "Marcus Vinicius Nascimento Santos", especialidade: "Cirurgião Cardiovascular", crm: "14157", cpf: "881.521.707-04" },
+            { nome: "Maria Cristina Rezende", especialidade: "Cirurgião Cardiovascular", crm: "5700", cpf: "" },
+            { nome: "Monica Pante", especialidade: "Cirurgia Vascular e Endovascular", crm: "15315", cpf: "" },
+            { nome: "Nestor Sabatovicz", especialidade: "Cirurgião Cardiovascular", crm: "7196", cpf: "" },
+            { nome: "Paula Damasco", especialidade: "Eletrofisiologista/Cardiologista", crm: "22218", cpf: "" },
+            { nome: "Paulo Antônio Marra da Motta", especialidade: "Cardiologista/Hemodinamicista", crm: "9169", cpf: "524.262.201-63" },
+            { nome: "Pedro Felipe Prates Silva", especialidade: "Eletrofisiologista/Cardiologista", crm: "18951", cpf: "" },
+            { nome: "Rafaella Melo", especialidade: "Cirurgia Vascular/endovascular", crm: "16594", cpf: "" },
+            { nome: "Ricardo Barros Corso", especialidade: "Cirurgião Cardiovascular", crm: "13283", cpf: "640.041.719-20" },
+            { nome: "Ricardo Borges Carranza", especialidade: "Cirurgião Cardiovascular", crm: "3640", cpf: "" },
+            { nome: "Rodrigo Jaqueto Nomura", especialidade: "Cirurgia Vascular/endovascular", crm: "32344", cpf: "315.904.228-64" },
+            { nome: "Ruiter Carlos Arantes Filho", especialidade: "Eletrofisiologista/Cardiologista", crm: "15693", cpf: "" },
+            { nome: "Samuel Mariani Passos da Silva", especialidade: "Eletrofisiologista/Cardiologista", crm: "22409", cpf: "" },
+            { nome: "Tamer Najar Seixas", especialidade: "Eletrofisiologista/Cardiologista", crm: "3534", cpf: "" },
+            { nome: "Tatiana Maia Jorge Ulhoa Barbosa", especialidade: "Cirurgião Cardiovascular", crm: "14172", cpf: "" },
+            { nome: "Thiago Almeida Barroso", especialidade: "Cirurgia Vascular/endovascular", crm: "23261", cpf: "657.605.903-59" },
+        ];
+
+        // Renderizar equipe
+        function renderTeam(filtro = "todos", termo = "") {
+            const teamList = document.getElementById("teamList");
+            teamList.innerHTML = "";
+
+            let filtrados = profissionais;
+
+            if (filtro !== "todos") {
+                filtrados = filtrados.filter(p => p.especialidade.includes(filtro));
+            }
+
+            if (termo) {
+                filtrados = filtrados.filter(p => 
+                    p.nome.toLowerCase().includes(termo.toLowerCase()) ||
+                    p.especialidade.toLowerCase().includes(termo.toLowerCase())
+                );
+            }
+
+            if (filtrados.length === 0) {
+                teamList.innerHTML = '<div class="no-results">Nenhum profissional encontrado</div>';
+                return;
+            }
+
+            filtrados.forEach(prof => {
+                const card = document.createElement("div");
+                card.className = "team-card";
+                card.innerHTML = `
+                    <h4>${prof.nome}</h4>
+                    <div class="specialty">${prof.especialidade}</div>
+                    <div class="crm">CRM-DF: ${prof.crm}</div>
+                    ${prof.cpf ? `<div class="cpf">CPF: ${prof.cpf}</div>` : ""}
+                `;
+                teamList.appendChild(card);
+            });
+        }
+
+        // Event Listeners para filtros
+        document.querySelectorAll(".filter-btn").forEach(btn => {
+            btn.addEventListener("click", function() {
+                document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+                this.classList.add("active");
+                const filtro = this.dataset.filter;
+                const termo = document.getElementById("teamSearch").value;
+                renderTeam(filtro, termo);
+            });
+        });
+
+        // Event Listener para busca
+        document.getElementById("teamSearch").addEventListener("input", function() {
+            const termo = this.value;
+            const filtro = document.querySelector(".filter-btn.active").dataset.filter;
+            renderTeam(filtro, termo);
+        });
+
+        // Formulário de Contato
+        document.getElementById("contactForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            const submitBtn = this.querySelector(".form-submit");
+            const messageDiv = document.getElementById("formMessage");
+            const formData = {
+                nome: document.getElementById("name").value,
+                email: document.getElementById("email").value,
+                telefone: document.getElementById("phone").value,
+                assunto: document.getElementById("subject").value,
+                mensagem: document.getElementById("message").value
+            };
+
+            // Enviar para webhook (pode usar serviços como Formspree, Basin, etc)
+            submitBtn.disabled = true;
+            submitBtn.textContent = "Enviando...";
+
+            // Simular envio com setTimeout
+            setTimeout(() => {
+                messageDiv.className = "form-message success";
+                messageDiv.textContent = "✓ Mensagem enviada com sucesso! Entraremos em contato em breve.";
+                
+                // Limpar formulário
+                this.reset();
+                submitBtn.disabled = false;
+                submitBtn.textContent = "Enviar Mensagem";
+
+                // Limpar mensagem após 5 segundos
+                setTimeout(() => {
+                    messageDiv.className = "form-message";
+                }, 5000);
+            }, 1000);
+        });
+
+        // Renderizar equipe ao carregar a página
+        renderTeam();
+
+        // Smooth scroll para links de navegação
+        document.querySelectorAll("a[href^='#']").forEach(link => {
+            link.addEventListener("click", function(e) {
+                const href = this.getAttribute("href");
+                if (href !== "#") {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({ behavior: "smooth" });
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
