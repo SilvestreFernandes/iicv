@@ -51,15 +51,17 @@
             display: flex;
             align-items: center;
             gap: 0.75rem;
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary-color);
         }
 
         .logo img {
-            height: 60px;
+            height: 80px;
             width: auto;
             filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+            transition: transform 0.3s;
+        }
+
+        .logo img:hover {
+            transform: scale(1.05);
         }
 
         nav ul {
@@ -111,11 +113,15 @@
         }
 
         .hero-logo {
-            height: 150px;
+            height: 280px;
             width: auto;
             margin-bottom: 2rem;
             filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
             animation: fadeInDown 0.8s ease-out;
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            display: inline-block;
         }
 
         @keyframes fadeInDown {
@@ -633,8 +639,7 @@
     <header>
         <nav>
             <div class="logo">
-                <img src="logo-iicv.png" alt="IICV Logo">
-                <span>IICV</span>
+                <img src="logo-iicv.png" alt="IICV - Instituto de Intervenção Cardiovascular">
             </div>
             <ul>
                 <li><a href="#procedimentos">Procedimentos</a></li>
