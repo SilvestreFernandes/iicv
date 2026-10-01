@@ -1,0 +1,56 @@
+import { SectionTitle } from "./SectionTitle";
+import { FormularioContato } from "@/components/contato/FormularioContato";
+import { site } from "@/lib/site";
+
+export function Contato() {
+  const { telefone, endereco } = site.negocio;
+  const digitos = telefone.replace(/\D/g, "").replace(/^55/, "");
+  const telefoneHref = `tel:+55${digitos}`;
+  const telefoneExibicao = `(${digitos.slice(0, 2)}) ${digitos.slice(2, 6)}-${digitos.slice(6)}`;
+
+  return (
+    <section id="contato" className="px-4 py-16 sm:px-6 sm:py-20">
+      <div className="mx-auto max-w-6xl">
+        <SectionTitle titulo="Entre em contato" subtitulo="Estamos prontos para atender você" />
+
+        <div className="mt-12 grid gap-6 sm:grid-cols-3">
+          <div className="rounded-lg border-t-4 border-accent bg-bg p-6 text-center shadow-sm">
+            <h3 className="font-display text-lg font-bold text-primary">Telefone</h3>
+            <p className="mt-3">
+              <a href={telefoneHref} className="font-semibold text-primary underline decoration-accent underline-offset-4">
+                {telefoneExibicao}
+              </a>
+            </p>
+          </div>
+          <div className="rounded-lg border-t-4 border-accent bg-bg p-6 text-center shadow-sm">
+            <h3 className="font-display text-lg font-bold text-primary">Endereço</h3>
+            {endereco && (
+              <p className="mt-3 text-sm leading-relaxed text-ink-muted">
+                {endereco.rua}
+                <br />
+                {endereco.bairro}, {endereco.cidade} - {endereco.uf}
+                <br />
+                CEP: {endereco.cep}
+              </p>
+            )}
+          </div>
+          <div className="rounded-lg border-t-4 border-accent bg-bg p-6 text-center shadow-sm">
+            <h3 className="font-display text-lg font-bold text-primary">Funcionamento</h3>
+            <p className="mt-3 text-sm leading-relaxed text-ink-muted">
+              Segunda a sexta: 8h às 18h
+              <br />
+              Urgência: 24 horas
+            </p>
+          </div>
+        </div>
+
+        <div className="mx-auto mt-12 max-w-xl rounded-lg border-t-4 border-accent bg-bg p-8 shadow-sm">
+          <h3 className="mb-6 text-center font-display text-2xl font-bold text-primary">
+            Envie uma mensagem
+          </h3>
+          <FormularioContato />
+        </div>
+      </div>
+    </section>
+  );
+}

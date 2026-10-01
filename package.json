@@ -1,0 +1,42 @@
+{
+  "name": "site-brandforge",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": ">=20.9.0"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "skills:sync": "node .claude/skills/comecar/scripts/skills-sync.mjs",
+    "skills:sintaxe": "node .claude/skills/comecar/scripts/checar-sintaxe.mjs",
+    "verificar": "node .claude/skills/comecar/scripts/skills-sync.mjs --check && node .claude/skills/comecar/scripts/checar-sintaxe.mjs && eslint && next build"
+  },
+  "dependencies": {
+    "@gsap/react": "2.1.2",
+    "gsap": "3.15.0",
+    "lenis": "1.3.26",
+    "motion": "13.4.4",
+    "next": "16.3.6",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "@playwright/mcp": "0.0.82",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.3.6",
+    "ffmpeg-static": "5.3.0",
+    "playwright": "1.64.0-alpha-1789764292000",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  },
+  "allowScripts": {
+    "ffmpeg-static@5.3.0": true
+  }
+}

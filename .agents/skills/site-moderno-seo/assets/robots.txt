@@ -1,0 +1,26 @@
+# Buscadores tradicionais
+User-agent: *
+Allow: /
+Disallow: /admin/
+
+# Rastreadores de IA — decisão consciente: LIBERADOS
+# (para bloquear, troque "Allow: /" por "Disallow: /" no agente desejado)
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://www.seudominio.com.br/sitemap.xml
