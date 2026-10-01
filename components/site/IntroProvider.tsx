@@ -1,29 +1,42 @@
 "use client";
 
-import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
+import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
 import { usePrefereMenosMovimento } from "@/lib/usar-menos-movimento";
 
-// Duração aproximada do vídeo institucional usado no fundo do hero (gTBn-l8pGJM: 0:18) + folga.
-const DURACAO_INTRO_MS = 18500;
+// Segurança caso o vídeo nunca dispare "ended" (autoplay bloqueado, erro de carregamento...).
+const TEMPO_MAXIMO_MS = 25000;
 
-const ContextoIntro = createContext(false);
+type ContextoIntro = {
+  pronto: boolean;
+  marcarPronto: () => void;
+};
 
-/** Controla quando a introdução em vídeo termina e o resto do site pode aparecer. */
+const ContextoIntro = createContext<ContextoIntro>({ pronto: false, marcarPronto: () => {} });
+
+/** Controla quando o vídeo de introdução termina e o resto do site pode aparecer. */
 export function IntroProvider({ children }: { children: ReactNode }) {
-  const [tempoEsgotado, setTempoEsgotado] = useState(false);
+  const [tempoEsgotadoOuTerminado, setTempoEsgotadoOuTerminado] = useState(false);
   const prefereMenosMovimento = usePrefereMenosMovimento();
 
   useEffect(() => {
-    const temporizador = setTimeout(() => setTempoEsgotado(true), DURACAO_INTRO_MS);
+    const temporizador = setTimeout(() => setTempoEsgotadoOuTerminado(true), TEMPO_MAXIMO_MS);
     return () => clearTimeout(temporizador);
   }, []);
 
-  // Prefere menos movimento: não prende o site esperando o vídeo terminar.
-  const pronto = tempoEsgotado || prefereMenosMovimento === true;
+  const marcarPronto = useCallback(() => setTempoEsgotadoOuTerminado(true), []);
 
-  return <ContextoIntro.Provider value={pronto}>{children}</ContextoIntro.Provider>;
+  // Prefere menos movimento: não prende o site esperando o vídeo.
+  const pronto = tempoEsgotadoOuTerminado || prefereMenosMovimento === true;
+
+  const valor = useMemo(() => ({ pronto, marcarPronto }), [pronto, marcarPronto]);
+
+  return <ContextoIntro.Provider value={valor}>{children}</ContextoIntro.Provider>;
+}
+
+export function useIntro() {
+  return useContext(ContextoIntro);
 }
 
 export function useIntroPronta() {
-  return useContext(ContextoIntro);
+  return useContext(ContextoIntro).pronto;
 }
