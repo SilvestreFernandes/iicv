@@ -1,5 +1,4 @@
 import { SectionTitle } from "./SectionTitle";
-import { FormularioContato } from "@/components/contato/FormularioContato";
 import { site } from "@/lib/site";
 
 export function Contato() {
@@ -42,13 +41,6 @@ export function Contato() {
               Urgência: 24 horas
             </p>
           </div>
-        </div>
-
-        <div className="mx-auto mt-12 max-w-xl rounded-lg border-t-4 border-accent bg-bg p-8 shadow-sm">
-          <h3 className="mb-6 text-center font-display text-2xl font-bold text-primary">
-            Envie uma mensagem
-          </h3>
-          <FormularioContato />
         </div>
       </div>
     </section>
