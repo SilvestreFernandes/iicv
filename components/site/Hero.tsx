@@ -14,7 +14,7 @@ export function Hero() {
 
       <div
         className={`relative z-10 mx-auto max-w-3xl px-4 transition-opacity duration-1000 sm:px-6 ${
-          pronto ? "opacity-100" : "opacity-0"
+          pronto ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
       >
         <h1 className="font-display text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">
