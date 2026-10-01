@@ -71,7 +71,7 @@ export function VideoFundoHero() {
           preload="auto"
           onEnded={marcarPronto}
         />
-        <div className="absolute inset-0 bg-primary/55" />
+        <div className="absolute inset-0 bg-linear-to-b from-primary/70 via-primary/35 to-primary/85" />
       </div>
 
       {!iniciado && (
