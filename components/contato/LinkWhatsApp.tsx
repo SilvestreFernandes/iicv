@@ -10,7 +10,7 @@ type Props = {
 };
 
 export function LinkWhatsApp({
-  mensagem = "Olá! Vim pelo site e gostaria de mais informações.",
+  mensagem = `Olá! Vim pelo site do ${site.nome.split(" - ")[0]} e gostaria de mais informações.`,
   className,
   children = "Falar no WhatsApp",
 }: Props) {

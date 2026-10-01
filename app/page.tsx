@@ -8,6 +8,7 @@ import { Equipe } from "@/components/site/Equipe";
 import { Convenios } from "@/components/site/Convenios";
 import { Contato } from "@/components/site/Contato";
 import { Footer } from "@/components/site/Footer";
+import { WhatsAppFlutuante } from "@/components/site/WhatsAppFlutuante";
 
 export default function Inicio() {
   return (
@@ -25,6 +26,7 @@ export default function Inicio() {
       </main>
       <RevelarConteudo>
         <Footer />
+        <WhatsAppFlutuante />
       </RevelarConteudo>
     </IntroProvider>
   );

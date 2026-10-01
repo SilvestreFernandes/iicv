@@ -37,7 +37,7 @@ export const site: Site = {
   negocio: {
     tipoSchema: "MedicalClinic",
     telefone: "+55-61-4040-4824",
-    whatsapp: "",
+    whatsapp: "5561998895313",
     email: "",
     endereco: {
       rua: "SGAS 613, Bloco C, Lote 2",

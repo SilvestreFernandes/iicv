@@ -1,4 +1,5 @@
 import { SectionTitle } from "./SectionTitle";
+import { LinkWhatsApp } from "@/components/contato/LinkWhatsApp";
 import { site } from "@/lib/site";
 
 export function Contato() {
@@ -12,13 +13,21 @@ export function Contato() {
       <div className="mx-auto max-w-6xl">
         <SectionTitle titulo="Entre em contato" subtitulo="Estamos prontos para atender você" />
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-3">
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           <div className="rounded-lg border-t-4 border-accent bg-bg p-6 text-center shadow-sm">
             <h3 className="font-display text-lg font-bold text-primary">Telefone</h3>
             <p className="mt-3">
               <a href={telefoneHref} className="font-semibold text-primary underline decoration-accent underline-offset-4">
                 {telefoneExibicao}
               </a>
+            </p>
+          </div>
+          <div className="rounded-lg border-t-4 border-accent bg-bg p-6 text-center shadow-sm">
+            <h3 className="font-display text-lg font-bold text-primary">WhatsApp</h3>
+            <p className="mt-3">
+              <LinkWhatsApp className="font-semibold text-primary underline decoration-accent underline-offset-4">
+                Enviar mensagem
+              </LinkWhatsApp>
             </p>
           </div>
           <div className="rounded-lg border-t-4 border-accent bg-bg p-6 text-center shadow-sm">
