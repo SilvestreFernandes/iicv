@@ -67,6 +67,52 @@ section[id] {
   animation: gradiente-fluxo 22s ease-in-out infinite;
 }
 
+/* Fundo do hero: brilho dourado no topo, azul na base e gradiente escuro em movimento. */
+.fundo-hero {
+  background:
+    radial-gradient(ellipse 80% 55% at 50% 0%, rgba(176, 141, 87, 0.2), transparent 65%),
+    radial-gradient(ellipse 70% 50% at 50% 110%, rgba(44, 74, 124, 0.5), transparent 70%),
+    linear-gradient(160deg, #08141e 0%, #0f172a 40%, #13264a 70%, #08141e 100%);
+  background-size:
+    100% 100%,
+    100% 100%,
+    300% 300%;
+  animation: gradiente-fluxo 18s ease-in-out infinite;
+}
+
+@keyframes grade-deslizar {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 64px 64px;
+  }
+}
+
+.grade-hero {
+  background-image:
+    linear-gradient(rgba(212, 184, 134, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212, 184, 134, 0.07) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black, transparent);
+  animation: grade-deslizar 24s linear infinite;
+}
+
+/* Pulso que percorre a linha de ECG (o caminho usa pathLength=1). */
+@keyframes ecg-varrer {
+  from {
+    stroke-dashoffset: 0.25;
+  }
+  to {
+    stroke-dashoffset: -1;
+  }
+}
+
+.ecg-pulso {
+  stroke-dasharray: 0.25 1;
+  animation: ecg-varrer 4.5s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
 /* Manchas de luz desfocadas que flutuam devagar atrás do conteúdo. */
 @keyframes flutuar {
   0%,
@@ -178,6 +224,9 @@ section[id] {
 
   .fundo-claro,
   .fundo-escuro,
+  .fundo-hero,
+  .grade-hero,
+  .ecg-pulso,
   .mancha,
   .texto-gradiente,
   .texto-gradiente-claro,

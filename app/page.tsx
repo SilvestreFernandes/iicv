@@ -1,4 +1,5 @@
 import { IntroProvider } from "@/components/site/IntroProvider";
+import { AberturaLogo } from "@/components/site/AberturaLogo";
 import { RevelarConteudo } from "@/components/site/RevelarConteudo";
 import { Header } from "@/components/site/Header";
 import { Hero } from "@/components/site/Hero";
@@ -13,6 +14,7 @@ import { WhatsAppFlutuante } from "@/components/site/WhatsAppFlutuante";
 export default function Inicio() {
   return (
     <IntroProvider>
+      <AberturaLogo />
       <Header />
       <main id="conteudo">
         <Hero />
