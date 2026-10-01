@@ -1,20 +1,33 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useSyncExternalStore } from "react";
 import { usePrefereMenosMovimento } from "@/lib/usar-menos-movimento";
 import { useIntro } from "./IntroProvider";
 
 const VIDEO_DESKTOP = "/videos/hero-iicv.mp4";
 const VIDEO_MOBILE = "/videos/hero-iicv-mobile.mp4";
-// Ponto de corte: abaixo disso o vídeo vertical (9:16) é usado; o navegador escolhe
-// a fonte certa sozinho, via media query nativa do <video>, sem precisar de JS.
+// Mesmo ponto de corte do md: do Tailwind. Escolhido via JS porque vários navegadores
+// mobile ignoram o atributo media em <source> de vídeo e carregavam o horizontal.
 const CORTE_MOBILE = "(max-width: 767px)";
+
+// Sem assinatura de mudanças: a escolha fica travada no carregamento, para girar o
+// aparelho não recarregar o vídeo no meio da introdução.
+const naoAssinar = () => () => {};
+
+function useTelaMobile(): boolean | null {
+  return useSyncExternalStore(
+    naoAssinar,
+    () => window.matchMedia(CORTE_MOBILE).matches,
+    () => null,
+  );
+}
 
 /** Vídeo institucional local: só toca quando o visitante clica em "Entrar" (garante o som,
  * que navegadores bloqueiam em autoplay sem gesto). Ao terminar, reinicia em loop sempre mudo
  * como fundo permanente do hero. */
 export function VideoFundoHero() {
   const prefereMenosMovimento = usePrefereMenosMovimento();
+  const telaMobile = useTelaMobile();
   const { iniciado, pronto, iniciar, marcarPronto } = useIntro();
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -27,7 +40,7 @@ export function VideoFundoHero() {
     video.play().catch(() => {});
   }, [pronto]);
 
-  if (prefereMenosMovimento !== false) {
+  if (prefereMenosMovimento !== false || telaMobile === null) {
     return <div className="absolute inset-0 bg-primary" aria-hidden="true" />;
   }
 
@@ -52,14 +65,12 @@ export function VideoFundoHero() {
           // Vídeo vertical (9:16) é mais "largo" que a tela de celulares modernos (~9:19.5+):
           // object-cover cortaria as laterais pra preencher a altura. object-contain evita o
           // corte (sobra a cor de fundo em cima/embaixo); no desktop, cover preenche normalmente.
-          className="absolute inset-0 h-full w-full object-contain md:object-cover"
+          className={`absolute inset-0 h-full w-full ${telaMobile ? "object-contain" : "object-cover"}`}
+          src={telaMobile ? VIDEO_MOBILE : VIDEO_DESKTOP}
           playsInline
           preload="auto"
           onEnded={marcarPronto}
-        >
-          <source src={VIDEO_MOBILE} media={CORTE_MOBILE} />
-          <source src={VIDEO_DESKTOP} />
-        </video>
+        />
         <div className="absolute inset-0 bg-primary/55" />
       </div>
 
