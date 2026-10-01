@@ -4,7 +4,11 @@ import { useEffect, useRef } from "react";
 import { usePrefereMenosMovimento } from "@/lib/usar-menos-movimento";
 import { useIntro } from "./IntroProvider";
 
-const VIDEO_SRC = "/videos/hero-iicv.mp4";
+const VIDEO_DESKTOP = "/videos/hero-iicv.mp4";
+const VIDEO_MOBILE = "/videos/hero-iicv-mobile.mp4";
+// Ponto de corte: abaixo disso o vídeo vertical (9:16) é usado; o navegador escolhe
+// a fonte certa sozinho, via media query nativa do <video>, sem precisar de JS.
+const CORTE_MOBILE = "(max-width: 767px)";
 
 /** Vídeo institucional local: só toca quando o visitante clica em "Entrar" (garante o som,
  * que navegadores bloqueiam em autoplay sem gesto). Ao terminar, reinicia em loop sempre mudo
@@ -46,11 +50,13 @@ export function VideoFundoHero() {
         <video
           ref={videoRef}
           className="absolute inset-0 h-full w-full object-cover"
-          src={VIDEO_SRC}
           playsInline
           preload="auto"
           onEnded={marcarPronto}
-        />
+        >
+          <source src={VIDEO_MOBILE} media={CORTE_MOBILE} />
+          <source src={VIDEO_DESKTOP} />
+        </video>
         <div className="absolute inset-0 bg-primary/55" />
       </div>
 
