@@ -49,7 +49,10 @@ export function VideoFundoHero() {
       <div className="absolute inset-0" aria-hidden="true">
         <video
           ref={videoRef}
-          className="absolute inset-0 h-full w-full object-cover"
+          // Vídeo vertical (9:16) é mais "largo" que a tela de celulares modernos (~9:19.5+):
+          // object-cover cortaria as laterais pra preencher a altura. object-contain evita o
+          // corte (sobra a cor de fundo em cima/embaixo); no desktop, cover preenche normalmente.
+          className="absolute inset-0 h-full w-full object-contain md:object-cover"
           playsInline
           preload="auto"
           onEnded={marcarPronto}
