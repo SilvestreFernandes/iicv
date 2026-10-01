@@ -6,7 +6,10 @@ export function Contato() {
   const { telefone, endereco } = site.negocio;
   const digitos = telefone.replace(/\D/g, "").replace(/^55/, "");
   const telefoneHref = `tel:+55${digitos}`;
-  const telefoneExibicao = `(${digitos.slice(0, 2)}) ${digitos.slice(2, 6)}-${digitos.slice(6)}`;
+  // Celular (9 dígitos após o DDD) quebra 5+4; fixo (8 dígitos) quebra 4+4.
+  const numeroLocal = digitos.slice(2);
+  const corte = numeroLocal.length === 9 ? 5 : 4;
+  const telefoneExibicao = `(${digitos.slice(0, 2)}) ${numeroLocal.slice(0, corte)}-${numeroLocal.slice(corte)}`;
 
   return (
     <section id="contato" className="px-4 py-16 sm:px-6 sm:py-20">
