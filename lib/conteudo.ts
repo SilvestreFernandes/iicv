@@ -55,11 +55,6 @@ export const procedimentos: Procedimento[] = [
   },
 ];
 
-export const videosInstitucionais = [
-  { titulo: "Vídeo institucional", youtubeId: "1OI3CCz1a_Y" },
-  { titulo: "Conheça o IICV", youtubeId: "gTBn-l8pGJM" },
-];
-
 export const convenios = [
   "Amil",
   "Unimed",

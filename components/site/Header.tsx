@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import { site } from "@/lib/site";
+import { useIntroPronta } from "./IntroProvider";
 
 const links = [
   { href: "#procedimentos", label: "Procedimentos" },
@@ -10,7 +13,10 @@ const links = [
 ];
 
 export function Header() {
+  const pronto = useIntroPronta();
   const telefoneHref = `tel:${site.negocio.telefone.replace(/[^\d+]/g, "")}`;
+
+  if (!pronto) return null;
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-bg/95 backdrop-blur">

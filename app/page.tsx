@@ -1,6 +1,7 @@
+import { IntroProvider } from "@/components/site/IntroProvider";
+import { RevelarConteudo } from "@/components/site/RevelarConteudo";
 import { Header } from "@/components/site/Header";
 import { Hero } from "@/components/site/Hero";
-import { Videos } from "@/components/site/Videos";
 import { Procedimentos } from "@/components/site/Procedimentos";
 import { Diferenciais } from "@/components/site/Diferenciais";
 import { Equipe } from "@/components/site/Equipe";
@@ -10,18 +11,21 @@ import { Footer } from "@/components/site/Footer";
 
 export default function Inicio() {
   return (
-    <>
+    <IntroProvider>
       <Header />
       <main id="conteudo">
         <Hero />
-        <Videos />
-        <Procedimentos />
-        <Diferenciais />
-        <Equipe />
-        <Convenios />
-        <Contato />
+        <RevelarConteudo>
+          <Procedimentos />
+          <Diferenciais />
+          <Equipe />
+          <Convenios />
+          <Contato />
+        </RevelarConteudo>
       </main>
-      <Footer />
-    </>
+      <RevelarConteudo>
+        <Footer />
+      </RevelarConteudo>
+    </IntroProvider>
   );
 }
