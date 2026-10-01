@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { site } from "@/lib/site";
 import { useIntroPronta } from "./IntroProvider";
+import { LinkWhatsApp } from "@/components/contato/LinkWhatsApp";
 
 const links = [
   { href: "#procedimentos", label: "Procedimentos" },
@@ -16,7 +17,6 @@ const links = [
 export function Header() {
   const pronto = useIntroPronta();
   const [menuAberto, setMenuAberto] = useState(false);
-  const telefoneHref = `tel:${site.negocio.telefone.replace(/[^\d+]/g, "")}`;
 
   if (!pronto) return null;
 
@@ -41,12 +41,12 @@ export function Header() {
         </ul>
 
         <div className="flex items-center gap-3">
-          <a
-            href={telefoneHref}
+          <LinkWhatsApp
+            mensagem={`Olá! Vim pelo site do ${site.nome.split(" - ")[0]} e gostaria de agendar uma consulta.`}
             className="shrink-0 rounded border-2 border-primary bg-primary px-4 py-2 text-sm font-semibold text-accent-light transition-colors hover:bg-primary-light sm:px-5"
           >
             Agende agora
-          </a>
+          </LinkWhatsApp>
 
           <button
             type="button"
